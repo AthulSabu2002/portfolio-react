@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import TerminalPortfolio from './Profile';
 import { portfolioContent } from '../config/portfolioContent';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -42,6 +43,10 @@ const MainPortfolio = () => {
     <div className={`min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white transition-all duration-300 relative overflow-hidden ${
       isTerminalOpen && !isMobile ? 'lg:pr-[520px]' : ''
     }`}>
+      <Helmet>
+        <title>Portfolio</title>
+      </Helmet>
+      
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f6,transparent)] opacity-10"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_100%,#22c55e,transparent)] opacity-10"></div>
@@ -55,12 +60,15 @@ const MainPortfolio = () => {
               {portfolioContent?.hero?.name || 'Your Name'}
             </h1>
             <p className="text-lg sm:text-xl text-slate-400">{portfolioContent?.hero?.title || 'Your Title'}</p>
+            <p className="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed text-justify">
+              {portfolioContent?.hero?.description}
+            </p>
           </section>
 
           {/* Updated Skills Grid */}
           <section className="space-y-6">
             <h2 className="text-2xl font-semibold text-slate-200 text-center">Tech Stack</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
               {skills.map((skill, index) => (
                 <div key={index} 
                   className="group px-3 py-2 sm:px-4 sm:py-3 bg-slate-800/30 backdrop-blur-sm rounded-lg text-center text-slate-400 border border-slate-700/50 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:bg-slate-800/50">
