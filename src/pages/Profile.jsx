@@ -91,7 +91,10 @@ const TerminalPortfolio = () => {
                   <Code className="w-4 h-4 text-slate-400" />
                   <p className="text-sm text-slate-400 font-mono">{project.tech}</p>
                 </div>
-                <p className="text-slate-200 pl-6">{project.description}</p>
+                <p className="text-slate-200 pl-6 mb-2">{project.description}</p>
+                <p className="text-emerald-400 pl-6 font-mono text-sm">
+                  Deploy: {project.deployLink}
+                </p>
               </div>
             ))}
           </div>

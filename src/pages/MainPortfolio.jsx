@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import TerminalPortfolio from './Profile';
 import { portfolioContent } from '../config/portfolioContent';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiExpress } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin, FaPython, FaJava } from 'react-icons/fa';
+import { SiTypescript, SiMongodb, SiExpress, SiC } from 'react-icons/si';
 
 const MainPortfolio = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -27,15 +27,22 @@ const MainPortfolio = () => {
   }
 
   const skills = [
+    // Programming Languages
+    { name: 'C', icon: <SiC /> },
+    { name: 'Java', icon: <FaJava /> },
+    { name: 'Python', icon: <FaPython /> },
+    { name: 'JavaScript', icon: <FaJs /> },
+    // Frontend Technologies
     { name: 'HTML', icon: <FaHtml5 /> },
     { name: 'CSS', icon: <FaCss3Alt /> },
-    { name: 'JavaScript', icon: <FaJs /> },
-    { name: 'TypeScript', icon: <SiTypescript /> },
     { name: 'React', icon: <FaReact /> },
+    // Backend Technologies
     { name: 'Node.js', icon: <FaNode /> },
     { name: 'Express', icon: <SiExpress /> },
+    // Databases
     { name: 'MongoDB', icon: <SiMongodb /> },
     { name: 'SQL', icon: <FaDatabase /> },
+    // Version Control
     { name: 'Git', icon: <FaGitAlt /> },
   ];
 
@@ -99,8 +106,30 @@ const MainPortfolio = () => {
               {portfolioContent?.projects?.map((project, idx) => (
                 <div key={idx} 
                   className="group p-6 bg-gradient-to-b from-slate-800/50 to-slate-800/30 backdrop-blur-sm rounded-lg border border-slate-700/50 hover:border-emerald-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-emerald-500/5 hover:shadow-lg">
+                  <div className="mb-4 overflow-hidden rounded-lg border border-slate-700/50">
+                    <img 
+                      src={project.previewImage} 
+                      alt={`${project.name} preview`}
+                      className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/640x360?text=Project+Preview';
+                      }}
+                    />
+                  </div>
                   <h3 className="text-xl text-emerald-400 mb-2 group-hover:text-emerald-300 transition-colors">{project.title}</h3>
-                  <p className="text-slate-400 group-hover:text-slate-300 transition-colors">{project.desc}</p>
+                  <p className="text-slate-400 group-hover:text-slate-300 transition-colors mb-4">{project.desc}</p>
+                  <a 
+                    href={project.deployLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
+                  >
+                    <span>View Live Demo</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </a>
                 </div>
               ))}
             </div>
