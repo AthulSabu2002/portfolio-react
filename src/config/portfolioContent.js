@@ -50,7 +50,8 @@ const portfolioContent = {
   
   social: {
     github: 'https://github.com/AthulSabu2002',
-    linkedin: 'https://www.linkedin.com/in/athul-sabu-417a5327b/'
+    linkedin: 'https://www.linkedin.com/in/athul-sabu-417a5327b/',
+    email: 'mailto:athulsabu75@gmail.com'  // Add this line
   },
 
   terminal: {
@@ -58,7 +59,7 @@ const portfolioContent = {
     prompt: '~',
     availableCommands: `
       Available commands:
-      • projects - View my featured work
+      • projects - View my projects
       • about - Learn about me
       • skills - See my technical skills
       • contact - Get my contact info

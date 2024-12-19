@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import TerminalPortfolio from './Profile';
 import { portfolioContent } from '../config/portfolioContent';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin, FaPython, FaJava } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin, FaPython, FaJava, FaEnvelope } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiExpress, SiC } from 'react-icons/si';
 
 const MainPortfolio = () => {
@@ -101,7 +101,7 @@ const MainPortfolio = () => {
 
           {/* Updated Featured Work */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-semibold text-slate-200 text-center">Featured Work</h2>
+            <h2 className="text-2xl font-semibold text-slate-200 text-center">Projects</h2>
             <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
               {portfolioContent?.projects?.map((project, idx) => (
                 <div key={idx} 
@@ -159,6 +159,11 @@ const MainPortfolio = () => {
                 className="group px-6 py-2 bg-slate-800/30 backdrop-blur-sm rounded-full text-slate-400 border border-slate-700/50 hover:border-emerald-400/50 hover:text-slate-200 transition-all duration-300 hover:scale-105 flex items-center gap-2">
                 <FaLinkedin className="w-5 h-5 group-hover:text-emerald-400 transition-colors" />
                 <span>LinkedIn</span>
+              </a>
+              <a href={portfolioContent.social.email} target="_blank" rel="noopener noreferrer"
+                className="group px-6 py-2 bg-slate-800/30 backdrop-blur-sm rounded-full text-slate-400 border border-slate-700/50 hover:border-emerald-400/50 hover:text-slate-200 transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                <FaEnvelope className="w-5 h-5 group-hover:text-emerald-400 transition-colors" />
+                <span>Email</span>
               </a>
             </div>
           </section>
