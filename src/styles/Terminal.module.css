@@ -1,0 +1,21 @@
+.terminalContainer {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.terminalScroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.terminalScroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+.terminalScroll::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.3);
+  border-radius: 2px;
+}
+
+.terminalScroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.5);
+}

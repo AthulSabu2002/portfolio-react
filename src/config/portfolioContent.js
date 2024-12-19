@@ -5,7 +5,16 @@ const portfolioContent = {
   },
   
   skills: [
-    'HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Git'
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Node.js',
+    'Express',
+    'MongoDB',
+    'SQL',
+    'Git'
   ],
   
   projects: [
@@ -24,11 +33,6 @@ const portfolioContent = {
       description: 'Enterprise-grade component library'
     }
   ],
-  
-  about: `
-    Full-stack developer with a passion for clean, minimal design and scalable architecture.
-    Previously at [Company], now building the future of web experiences.
-  `,
   
   social: {
     github: 'https://github.com',
@@ -49,5 +53,4 @@ const portfolioContent = {
   }
 };
 
-console.log('Loading portfolio content:', portfolioContent); // Debug log
 export { portfolioContent };

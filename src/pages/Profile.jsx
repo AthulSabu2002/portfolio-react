@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Terminal, ArrowRight, Code, User, Mail, Briefcase } from 'lucide-react';
 import { portfolioContent } from '../config/portfolioContent';
+import styles from '../styles/Terminal.module.css';
 
 const TerminalPortfolio = () => {
   const [input, setInput] = useState('');
@@ -26,10 +27,24 @@ const TerminalPortfolio = () => {
       })
     },
     about: {
-      description: 'About me',
+      description: 'Learn about me',
       action: () => ({
-        type: 'about',
-        content: portfolioContent?.about || 'About content not available'
+        type: 'system',
+        content: `Name: ${portfolioContent.hero.name}\nRole: ${portfolioContent.hero.title}\n\nI am a passionate developer focused on creating elegant solutions to complex problems.`
+      })
+    },
+    skills: {
+      description: 'See technical skills',
+      action: () => ({
+        type: 'system',
+        content: `Technical Skills:\n${portfolioContent.skills.map(skill => `• ${skill}`).join('\n')}`
+      })
+    },
+    contact: {
+      description: 'Get contact info',
+      action: () => ({
+        type: 'system',
+        content: `You can find me at:\nGitHub: ${portfolioContent.social.github}\nLinkedIn: ${portfolioContent.social.linkedin}`
       })
     }
   };
@@ -82,17 +97,6 @@ const TerminalPortfolio = () => {
           </div>
         );
       
-      case 'about':
-        return (
-          <div className="mt-4 bg-slate-800/50 p-4 rounded-lg border border-slate-700">
-            <div className="flex items-center gap-2 mb-3">
-              <User className="w-4 h-4 text-emerald-400" />
-              <span className="text-emerald-400 font-mono">About Me</span>
-            </div>
-            <p className="text-slate-200 whitespace-pre-line pl-6">{item.content}</p>
-          </div>
-        );
-
       case 'system':
         return (
           <div className="mt-4 bg-slate-800/50 p-4 rounded-lg border border-slate-700">
@@ -127,13 +131,13 @@ const TerminalPortfolio = () => {
   };
 
   return (
-    <div className="bg-slate-900 text-slate-200 rounded-lg w-full h-full font-mono flex flex-col">
+    <div className={`${styles.terminalContainer} flex flex-col h-full`}>
       <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-700">
         <Terminal className="w-4 h-4 text-emerald-400" />
         <span className="text-xs text-slate-400">portfolio.sh</span>
       </div>
       
-      <div className="space-y-1 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-800">
+      <div className={`flex-1 overflow-y-auto space-y-1 mb-4 ${styles.terminalScroll}`}>
         {history.map((item, idx) => (
           <div key={idx}>
             {renderOutput(item)}
@@ -141,7 +145,7 @@ const TerminalPortfolio = () => {
         ))}
       </div>
       
-      <form onSubmit={handleSubmit} className="mt-3 flex items-center bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+      <form onSubmit={handleSubmit} className="mt-auto sticky bottom-0 flex items-center bg-slate-800/50 p-2 rounded-lg border border-slate-700">
         <span className="text-emerald-400 mr-2">{currentPath} $</span>
         <input
           type="text"
