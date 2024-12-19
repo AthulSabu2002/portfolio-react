@@ -30,7 +30,7 @@ const TerminalPortfolio = () => {
       description: 'Learn about me',
       action: () => ({
         type: 'system',
-        content: `Name: ${portfolioContent.hero.name}\nRole: ${portfolioContent.hero.title}\n\nI am a passionate developer focused on creating elegant solutions to complex problems.`
+        content: `Name: ${portfolioContent.hero.name}\nRole: ${portfolioContent.hero.title}\n\n${portfolioContent.hero.description}`
       })
     },
     skills: {

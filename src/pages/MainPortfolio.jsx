@@ -55,7 +55,7 @@ const MainPortfolio = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative">
         <div className="space-y-12 sm:space-y-16">
           {/* Hero Section */}
-          <section className="text-center space-y-6">
+          <section className="text-center space-y-8">
             <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 mb-6 overflow-hidden rounded-full group">
               <img 
                 src={portfolioContent?.hero?.profileImage} 
@@ -67,13 +67,15 @@ const MainPortfolio = () => {
               />
               <div className="absolute inset-0 rounded-full ring-2 ring-slate-400/50 group-hover:ring-emerald-400/50 transition-colors duration-700"></div>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
-              {portfolioContent?.hero?.name || 'Your Name'}
-            </h1>
-            <p className="text-lg sm:text-xl text-slate-400">{portfolioContent?.hero?.title || 'Your Title'}</p>
-            <p className="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed text-justify">
-              {portfolioContent?.hero?.description}
-            </p>
+            <div>
+              <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent mb-3">
+                {portfolioContent?.hero?.name || 'Your Name'}
+              </h1>
+              <p className="text-lg sm:text-xl text-slate-400 mb-4">{portfolioContent?.hero?.title || 'Your Title'}</p>
+              <p className="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed text-justify">
+                {portfolioContent?.hero?.description}
+              </p>
+            </div>
           </section>
 
           {/* Updated Skills Grid */}
@@ -101,6 +103,17 @@ const MainPortfolio = () => {
                   <p className="text-slate-400 group-hover:text-slate-300 transition-colors">{project.desc}</p>
                 </div>
               ))}
+            </div>
+            <div className="text-center pt-4">
+              <a 
+                href={portfolioContent.social.github} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2 bg-slate-800/30 backdrop-blur-sm rounded-full text-slate-400 border border-slate-700/50 hover:border-emerald-400/50 hover:text-slate-200 transition-all duration-300 hover:scale-105"
+              >
+                <FaGithub className="w-5 h-5 group-hover:text-emerald-400 transition-colors" />
+                <span>View More Projects on GitHub</span>
+              </a>
             </div>
           </section>
 
