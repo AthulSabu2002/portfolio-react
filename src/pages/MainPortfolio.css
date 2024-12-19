@@ -1,0 +1,15 @@
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.skill-icon {
+  font-size: 24px;
+  color: #61dafb;
+}
+
+.skill-name {
+  font-size: 16px;
+}
