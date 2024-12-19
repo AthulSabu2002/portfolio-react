@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import TerminalPortfolio from './Profile';
 import { portfolioContent } from '../config/portfolioContent';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiExpress } from 'react-icons/si';
 
 const MainPortfolio = () => {
@@ -39,11 +39,15 @@ const MainPortfolio = () => {
   ];
 
   return (
-    <div className={`min-h-screen bg-slate-900 text-white transition-all duration-300 ${
+    <div className={`min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white transition-all duration-300 relative overflow-hidden ${
       isTerminalOpen && !isMobile ? 'lg:pr-[520px]' : ''
     }`}>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f6,transparent)] opacity-10"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_100%,#22c55e,transparent)] opacity-10"></div>
+
       {/* Main Content - Centered */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative">
         <div className="space-y-12 sm:space-y-16">
           {/* Hero Section */}
           <section className="text-center space-y-4">
@@ -53,44 +57,47 @@ const MainPortfolio = () => {
             <p className="text-lg sm:text-xl text-slate-400">{portfolioContent?.hero?.title || 'Your Title'}</p>
           </section>
 
-          {/* Skills Grid - Responsive columns */}
+          {/* Updated Skills Grid */}
           <section className="space-y-6">
             <h2 className="text-2xl font-semibold text-slate-200 text-center">Tech Stack</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
               {skills.map((skill, index) => (
                 <div key={index} 
-                  className="px-3 py-2 sm:px-4 sm:py-3 bg-slate-800/50 rounded-lg text-center text-slate-400 border border-slate-700 hover:border-emerald-400 transition-colors">
-                  <span className="skill-icon">{skill.icon}</span>
-                  <span className="skill-name">{skill.name}</span>
+                  className="group px-3 py-2 sm:px-4 sm:py-3 bg-slate-800/30 backdrop-blur-sm rounded-lg text-center text-slate-400 border border-slate-700/50 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:bg-slate-800/50">
+                  <span className="skill-icon block text-2xl mb-1 group-hover:text-emerald-400 transition-colors">{skill.icon}</span>
+                  <span className="skill-name text-sm">{skill.name}</span>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Featured Work - Responsive Grid */}
+          {/* Updated Featured Work */}
           <section className="space-y-6">
             <h2 className="text-2xl font-semibold text-slate-200 text-center">Featured Work</h2>
             <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
               {portfolioContent?.projects?.map((project, idx) => (
-                <div key={idx} className="p-6 bg-gradient-to-b from-slate-800 to-slate-800/50 rounded-lg border border-slate-700 hover:border-emerald-400 transition-all duration-300">
-                  <h3 className="text-xl text-emerald-400 mb-2">{project.title}</h3>
-                  <p className="text-slate-400">{project.desc}</p>
+                <div key={idx} 
+                  className="group p-6 bg-gradient-to-b from-slate-800/50 to-slate-800/30 backdrop-blur-sm rounded-lg border border-slate-700/50 hover:border-emerald-400/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-emerald-500/5 hover:shadow-lg">
+                  <h3 className="text-xl text-emerald-400 mb-2 group-hover:text-emerald-300 transition-colors">{project.title}</h3>
+                  <p className="text-slate-400 group-hover:text-slate-300 transition-colors">{project.desc}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Quick Links - Centered */}
+          {/* Updated Social Links */}
           <section className="space-y-6 text-center">
             <h2 className="text-2xl font-semibold text-slate-200">Connect</h2>
             <div className="flex gap-4 justify-center">
               <a href={portfolioContent.social.github} target="_blank" rel="noopener noreferrer" 
-                className="px-6 py-2 bg-slate-800/50 rounded-full text-slate-400 border border-slate-700 hover:border-emerald-400 hover:text-slate-200 transition-colors">
-                GitHub
+                className="group px-6 py-2 bg-slate-800/30 backdrop-blur-sm rounded-full text-slate-400 border border-slate-700/50 hover:border-emerald-400/50 hover:text-slate-200 transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                <FaGithub className="w-5 h-5 group-hover:text-emerald-400 transition-colors" />
+                <span>GitHub</span>
               </a>
               <a href={portfolioContent.social.linkedin} target="_blank" rel="noopener noreferrer"
-                className="px-6 py-2 bg-slate-800/50 rounded-full text-slate-400 border border-slate-700 hover:border-emerald-400 hover:text-slate-200 transition-colors">
-                LinkedIn
+                className="group px-6 py-2 bg-slate-800/30 backdrop-blur-sm rounded-full text-slate-400 border border-slate-700/50 hover:border-emerald-400/50 hover:text-slate-200 transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                <FaLinkedin className="w-5 h-5 group-hover:text-emerald-400 transition-colors" />
+                <span>LinkedIn</span>
               </a>
             </div>
           </section>
@@ -102,13 +109,13 @@ const MainPortfolio = () => {
         <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-40" onClick={() => setIsTerminalOpen(false)} />
       )}
 
-      {/* Terminal - Responsive Position */}
+      {/* Updated Terminal styling */}
       <div 
-        className={`fixed transition-all duration-300 ease-in-out z-50 ${
+        className={`fixed transition-all duration-500 ease-in-out z-50 ${
           isTerminalOpen 
             ? isMobile
-              ? 'inset-4 sm:inset-8 bg-slate-900 rounded-lg shadow-2xl border border-slate-700'
-              : 'top-0 right-0 w-[520px] h-full border-l border-slate-700 bg-slate-900/95 backdrop-blur'
+              ? 'inset-8 bg-slate-900/95 backdrop-blur-md rounded-xl shadow-2xl border-2 border-slate-700/50 hover:border-emerald-400/50'
+              : 'top-8 bottom-8 right-8 w-[480px] rounded-xl border-2 border-slate-700/50 hover:border-emerald-400/50 bg-slate-900/95 backdrop-blur-md shadow-2xl'
             : 'bottom-4 right-4 sm:bottom-8 sm:right-8 w-auto h-auto'
         }`}
       >
