@@ -55,7 +55,18 @@ const MainPortfolio = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative">
         <div className="space-y-12 sm:space-y-16">
           {/* Hero Section */}
-          <section className="text-center space-y-4">
+          <section className="text-center space-y-6">
+            <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 mb-6 overflow-hidden rounded-full group">
+              <img 
+                src={portfolioContent?.hero?.profileImage} 
+                alt="Profile"
+                className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/200x200?text=Profile';
+                }}
+              />
+              <div className="absolute inset-0 rounded-full ring-2 ring-slate-400/50 group-hover:ring-emerald-400/50 transition-colors duration-700"></div>
+            </div>
             <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
               {portfolioContent?.hero?.name || 'Your Name'}
             </h1>

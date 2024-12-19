@@ -2,7 +2,8 @@ const portfolioContent = {
   hero: {
     name: "John Doe",
     title: "Full Stack Developer",
-    description: "I'm a passionate full-stack developer with a strong foundation in web technologies. With a keen eye for detail and a love for clean code, I specialize in creating responsive and user-friendly applications. I'm constantly learning and adapting to new technologies while maintaining a focus on writing maintainable and scalable code. My goal is to build solutions that make a positive impact on users' lives."
+    description: "I'm a passionate full-stack developer with a strong foundation in web technologies. With a keen eye for detail and a love for clean code, I specialize in creating responsive and user-friendly applications. I'm constantly learning and adapting to new technologies while maintaining a focus on writing maintainable and scalable code. My goal is to build solutions that make a positive impact on users' lives.",
+    profileImage: "/src/assets/profile-pic.png"
   },
   
   skills: [
