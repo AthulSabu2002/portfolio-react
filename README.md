@@ -24,8 +24,8 @@ A modern, high-performance React application template powered by Vite, designed 
 
 1. Clone the repository:
 ```bash
-git clone [your-repo-url]
-cd [your-project-name]
+git clone https://github.com/AthulSabu2002/portfolio-react.git
+cd portfolio-react
 ```
 
 2. Install dependencies:
