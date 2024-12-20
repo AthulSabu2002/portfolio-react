@@ -44,6 +44,24 @@ const portfolioContent = {
         description: 'Developed a Node.js web application to parse and extract key details from resume PDFs. Utilized Express.js, EJS, pdf-parse, compromise, and express-fileupload. The web application extracts and displays personal details such as name, email, qualifications, and more, showcasing skills in server-side JavaScript, file handling, and text processing.',
         deployLink: 'https://cv-parser-bsp2.onrender.com',
         previewImage: '/src/assets/projects/cvparser-preview.png'
+    },
+    {
+        name: 'FoodDelivery',
+        title: 'FoodDelivery',
+        tech: 'React, Node.js, Express, MongoDB',
+        desc: 'Full-stack food delivery web application',
+        description: 'Built a full-stack food delivery web application using React, Node.js, Express, and MongoDB. The web application features a user-friendly interface for browsing menus and placing orders, an admin panel for restaurant management, secure payment processing via Stripe, and real-time order tracking.',
+        deployLink: 'https://food-del-web-app.netlify.app/',
+        previewImage: '/src/assets/projects/food-del.png'
+    },
+    {
+        name: 'Gemini-clone',
+        title: 'Gemini-clone',
+        tech: 'React, Gemini API, CSS',
+        desc: 'AI chat interface clone inspired by Google Gemini',
+        description: 'Built a responsive Gemini clone using React and integrated with the official Gemini API. Features include a clean chat interface with message history, code block formatting, and responsive design. The application demonstrates proficiency in React state management, API integration, and CSS styling.',
+        deployLink: 'https://gemini-clone-athul-sabus-projects.vercel.app/',
+        previewImage: '/src/assets/projects/gemini-preview.png'
     }
   ],
 

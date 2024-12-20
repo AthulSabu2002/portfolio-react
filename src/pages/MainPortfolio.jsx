@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
@@ -6,9 +7,44 @@ import { portfolioContent } from '../config/portfolioContent';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin, FaPython, FaJava, FaEnvelope } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiExpress, SiC } from 'react-icons/si';
 
+const CodeParticle = ({ style }) => (
+  <div 
+    className="absolute text-emerald-500/20 font-mono text-sm animate-float select-none pointer-events-none"
+    style={style}
+  >
+    {['<', '/>', '{', '}', '/>', '&&', '=>', '||', '(', ')', '?'][Math.floor(Math.random() * 8)]}
+  </div>
+);
+
+const BinaryRain = () => {
+  const chars = '01';
+  return (
+    <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
+      {[...Array(20)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute text-emerald-500 font-mono text-xs animate-matrix"
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 2}s`,
+            animationDuration: `${10 + Math.random() * 10}s`
+          }}
+        >
+          {[...Array(20)].map((_, j) => (
+            <div key={j} className="my-1">
+              {chars[Math.floor(Math.random() * chars.length)]}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const MainPortfolio = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [particles, setParticles] = useState([]);
 
   useEffect(() => {
     console.log('Portfolio Content:', portfolioContent); // Debug log
@@ -19,6 +55,25 @@ const MainPortfolio = () => {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const generateParticles = () => {
+      const newParticles = [...Array(15)].map((_, i) => ({
+        id: i,
+        style: {
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${15 + Math.random() * 15}s`
+        }
+      }));
+      setParticles(newParticles);
+    };
+
+    generateParticles();
+    const interval = setInterval(generateParticles, 20000);
+    return () => clearInterval(interval);
   }, []);
 
   if (!portfolioContent) {
@@ -50,6 +105,12 @@ const MainPortfolio = () => {
     <div className={`min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white transition-all duration-300 relative overflow-hidden ${
       isTerminalOpen && !isMobile ? 'lg:pr-[520px]' : ''
     }`}>
+      {/* Background Effects */}
+      <BinaryRain />
+      {particles.map(particle => (
+        <CodeParticle key={particle.id} style={particle.style} />
+      ))}
+      
       <Helmet>
         <title>Portfolio</title>
       </Helmet>
@@ -62,26 +123,30 @@ const MainPortfolio = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative">
         <div className="space-y-12 sm:space-y-16">
           {/* Hero Section */}
-          <section className="text-center space-y-8">
-            <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 mb-6 overflow-hidden rounded-full group">
-              <img 
-                src={portfolioContent?.hero?.profileImage} 
-                alt="Profile"
-                className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/200x200?text=Profile';
-                }}
-              />
-              <div className="absolute inset-0 rounded-full ring-2 ring-slate-400/50 group-hover:ring-emerald-400/50 transition-colors duration-700"></div>
-            </div>
-            <div>
-              <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent mb-3">
-                {portfolioContent?.hero?.name || 'Your Name'}
-              </h1>
-              <p className="text-lg sm:text-xl text-slate-400 mb-4">{portfolioContent?.hero?.title || 'Your Title'}</p>
-              <p className="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed text-justify">
-                {portfolioContent?.hero?.description}
-              </p>
+          <section className="text-center sm:text-left space-y-8">
+            <div className="flex flex-col sm:flex-row items-start gap-6">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 overflow-hidden rounded-full group flex-shrink-0">
+                <img 
+                  src={portfolioContent?.hero?.profileImage} 
+                  alt="Profile"
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/200x200?text=Profile';
+                  }}
+                />
+                <div className="absolute inset-0 rounded-full ring-4 ring-slate-400/50 group-hover:ring-emerald-400/50 transition-all duration-700 shadow-[0_0_15px_rgba(16,185,129,0.1)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.2)]"></div>
+              </div>
+              <div className="flex-1">
+                <div className="text-center sm:text-left mb-6">
+                  <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent mb-3">
+                    {portfolioContent?.hero?.name || 'Your Name'}
+                  </h1>
+                  <p className="text-lg sm:text-xl text-slate-400">{portfolioContent?.hero?.title || 'Your Title'}</p>
+                </div>
+                <p className="text-base sm:text-lg text-slate-400 max-w-3xl leading-relaxed text-justify">
+                  {portfolioContent?.hero?.description}
+                </p>
+              </div>
             </div>
           </section>
 

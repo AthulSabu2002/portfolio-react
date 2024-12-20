@@ -56,6 +56,43 @@
     --chart-5: 340 75% 55%
   }
 }
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tw-translate-x, 100px), var(--tw-translate-y, -100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes matrix {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-float {
+  animation: float 20s linear infinite;
+  --tw-translate-x: 100px;
+  --tw-translate-y: -100px;
+}
+
+.animate-matrix {
+  animation: matrix linear infinite;
+}
+
 @layer base {
   * {
     @apply border-border;
