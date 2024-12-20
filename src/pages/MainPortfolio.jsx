@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import TerminalPortfolio from './Profile';
+import TerminalPortfolio from '../components/Terminal';
 import { portfolioContent } from '../config/portfolioContent';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin, FaPython, FaJava, FaEnvelope } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiExpress, SiC } from 'react-icons/si';
