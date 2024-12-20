@@ -41,6 +41,12 @@ const BinaryRain = () => {
   );
 };
 
+const GeometricBackground = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="geometric-pattern absolute inset-0 opacity-10"></div>
+  </div>
+);
+
 const MainPortfolio = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -107,6 +113,7 @@ const MainPortfolio = () => {
     }`}>
       {/* Background Effects */}
       <BinaryRain />
+      <GeometricBackground />
       {particles.map(particle => (
         <CodeParticle key={particle.id} style={particle.style} />
       ))}
@@ -122,28 +129,32 @@ const MainPortfolio = () => {
       {/* Main Content - Centered */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative">
         <div className="space-y-12 sm:space-y-16">
-          {/* Hero Section */}
-          <section className="text-center sm:text-left space-y-8">
-            <div className="flex flex-col sm:flex-row items-start gap-6">
-              <div className="relative w-32 h-32 sm:w-40 sm:h-40 overflow-hidden rounded-full group flex-shrink-0">
+          {/* Updated Hero Section */}
+          <section className="text-center sm:text-left space-y-8 relative">
+            <div className="hero-glow absolute inset-0 bg-emerald-500/20 blur-[100px] animate-pulse-slow"></div>
+            <div className="flex flex-col sm:flex-row items-start gap-6 relative">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto sm:mx-0">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 animate-spin-slow"></div>
+                <div className="absolute inset-[3px] rounded-full bg-slate-900"></div>
                 <img 
                   src={portfolioContent?.hero?.profileImage} 
                   alt="Profile"
-                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/200x200?text=Profile';
-                  }}
+                  className="absolute inset-[3px] rounded-full object-cover z-10 p-1"
                 />
-                <div className="absolute inset-0 rounded-full ring-4 ring-slate-400/50 group-hover:ring-emerald-400/50 transition-all duration-700 shadow-[0_0_15px_rgba(16,185,129,0.1)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.2)]"></div>
+                <div className="hexagon-border"></div>
               </div>
-              <div className="flex-1">
-                <div className="text-center sm:text-left mb-6">
-                  <h1 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent mb-3">
+              
+              <div className="flex-1 relative z-10">
+                <div className="glitch-wrapper mb-6">
+                  <h1 className="text-4xl sm:text-6xl font-bold glitch-text" data-text={portfolioContent?.hero?.name || 'Your Name'}>
                     {portfolioContent?.hero?.name || 'Your Name'}
                   </h1>
-                  <p className="text-lg sm:text-xl text-slate-400">{portfolioContent?.hero?.title || 'Your Title'}</p>
+                  <div className="glitch-underline"></div>
                 </div>
-                <p className="text-base sm:text-lg text-slate-400 max-w-3xl leading-relaxed text-justify">
+                <p className="text-lg sm:text-xl text-slate-400 typewriter-text">
+                  {portfolioContent?.hero?.title || 'Your Title'}
+                </p>
+                <p className="text-base sm:text-lg text-slate-400 max-w-3xl leading-relaxed text-justify mt-4 animated-text">
                   {portfolioContent?.hero?.description}
                 </p>
               </div>
