@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
@@ -6,46 +5,9 @@ import TerminalPortfolio from './Profile';
 import { portfolioContent } from '../config/portfolioContent';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGitAlt, FaGithub, FaLinkedin, FaPython, FaJava, FaEnvelope } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiExpress, SiC } from 'react-icons/si';
-
-const CodeParticle = ({ style }) => (
-  <div 
-    className="absolute text-emerald-500/20 font-mono text-sm animate-float select-none pointer-events-none"
-    style={style}
-  >
-    {['<', '/>', '{', '}', '/>', '&&', '=>', '||', '(', ')', '?'][Math.floor(Math.random() * 8)]}
-  </div>
-);
-
-const BinaryRain = () => {
-  const chars = '01';
-  return (
-    <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
-      {[...Array(20)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute text-emerald-500 font-mono text-xs animate-matrix"
-          style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 2}s`,
-            animationDuration: `${10 + Math.random() * 10}s`
-          }}
-        >
-          {[...Array(20)].map((_, j) => (
-            <div key={j} className="my-1">
-              {chars[Math.floor(Math.random() * chars.length)]}
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const GeometricBackground = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <div className="geometric-pattern absolute inset-0 opacity-10"></div>
-  </div>
-);
+import CodeParticle from '../components/CodeParticle';
+import BinaryRain from '../components/BinaryRain';
+import GeometricBackground from '../components/GeometricBackground';
 
 const MainPortfolio = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
