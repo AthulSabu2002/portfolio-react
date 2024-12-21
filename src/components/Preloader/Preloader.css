@@ -23,8 +23,25 @@
 }
 
 .progress-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.evolution-emoji {
+  font-size: 32px;
+  animation: bounce 1s ease infinite;
+}
+
+.stage-text {
   font-family: monospace;
   color: #64ffda;
   font-size: 14px;
   letter-spacing: 2px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

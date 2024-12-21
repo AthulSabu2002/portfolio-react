@@ -42,7 +42,7 @@ const portfolioContent = {
         tech: 'Node.js, Express.js, EJS, pdf-parse',
         desc: 'Web application for parsing and extracting key details from resume PDFs',
         description: 'Developed a Node.js web application to parse and extract key details from resume PDFs. Utilized Express.js, EJS, pdf-parse, compromise, and express-fileupload. The web application extracts and displays personal details such as name, email, qualifications, and more, showcasing skills in server-side JavaScript, file handling, and text processing.',
-        deployLink: 'https://cv-parser-bsp2.onrender.com',
+        deployLink: 'https://automated-cv-parser.onrender.com/',
         previewImage: '/portfolio-react/images/projects/cvparser-preview.png'
     },
     {
