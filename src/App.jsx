@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import MainPortfolio from './pages/MainPortfolio';
 import Preloader from './components/Preloader/Preloader';
-import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
